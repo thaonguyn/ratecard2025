@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rate card 2025</title>
+    <title>Rate Card 2025</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-     <style>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-variant-numeric: normal;
+            font-feature-settings: "zero" 0;
         }
         
         body {
@@ -32,13 +34,19 @@
         }
         
         .header {
-            background: #CEEFF6;
+            background: linear-gradient(135deg, #BFDBF7 0%, #a8c8dd 100%);
             padding: 40px;
             text-align: center;
             color: #2c3e50;
         }
         
-        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+        }
         
         .header p {
             font-size: 1.2rem;
@@ -68,7 +76,7 @@
         .tab.active {
             background: white;
             color: #2c3e50;
-            border-bottom: 3px solid #CEEFF6;
+            border-bottom: 3px solid #BFDBF7;
         }
         
         .tab:hover {
@@ -100,17 +108,17 @@
         }
         
         .price-card:hover {
-            border-color: #CEEFF6;
+            border-color: #BFDBF7;
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
         .price-card h3 {
-            color: #7FB6F1;
+            color: #BFDBF7;
             font-size: 1.4rem;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #CEEFF6;
+            border-bottom: 2px solid #BFDBF7;
             font-weight: 700;
         }
         
@@ -168,7 +176,7 @@
         .form-group select:focus,
         .form-group input:focus {
             outline: none;
-            border-color: #CEEFF6;
+            border-color: #BFDBF7;
         }
         
         .result {
@@ -176,11 +184,11 @@
             border-radius: 15px;
             padding: 30px;
             margin-top: 30px;
-            border: 2px solid #CEEFF6;
+            border: 2px solid #BFDBF7;
         }
         
         .result h3 {
-            color: #7FB6F1;
+            color: #BFDBF7;
             font-size: 1.5rem;
             margin-bottom: 20px;
             font-weight: 700;
@@ -208,7 +216,7 @@
         }
         
         .guide-section h3 {
-            color: #7FB6F1;
+            color: #BFDBF7;
             margin-bottom: 20px;
             font-size: 1.3rem;
             font-weight: 700;
@@ -231,22 +239,22 @@
             content: counter(guide-counter) ".";
             position: absolute;
             left: 0;
-            color: #7FB6F1;
+            color: #BFDBF7;
             font-weight: bold;
             font-size: 1.1rem;
         }
         
         .guide-list li strong {
-            color: #7FB6F1;
+            color: #BFDBF7;
             font-weight: 700;
         }
         
         .highlight {
-            background: #9DD876;
+            background: #A4CB24;
             padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
-            border-left: 4px solid #7FB6F1;
+            border-left: 4px solid #BFDBF7;
         }
         
         .highlight h3 {
@@ -261,7 +269,7 @@
         }
         
         .btn {
-            background: #CEEFF6;
+            background: linear-gradient(135deg, #BFDBF7 0%, #a8c8dd 100%);
             color: #2c3e50;
             padding: 12px 25px;
             border: none;
@@ -276,16 +284,80 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-    
-.header h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-}
-
-</style>
+        
+        .service-options {
+            margin-top: 20px;
+        }
+        
+        .service-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            background: #f0f5ff;
+        }
+        
+        .service-option input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        
+        .service-option-details {
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .service-option-name {
+            font-weight: 500;
+        }
+        
+        .service-option-quantity {
+            width: 80px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+        
+        .service-option-price {
+            font-weight: 600;
+            min-width: 120px;
+            text-align: right;
+        }
+        
+        .urgency-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .urgency-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: #f0f5ff;
+            border-radius: 8px;
+        }
+        
+        .urgency-option input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        
+        .note {
+            font-style: italic;
+            color: #666;
+            margin-top: 15px;
+        }
+        
+        .export-btn {
+            margin-top: 20px;
+            background: #FCD901;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -308,10 +380,9 @@
                     <li><strong>Bước 2:</strong> Sử dụng công cụ tính giá tự động để ước tính chi phí</li>
                     <li><strong>Bước 3:</strong> Chọn style phù hợp với yêu cầu dự án</li>
                     <li><strong>Bước 4:</strong> Điều chỉnh số lượng và tùy chọn bổ sung</li>
+                    <li><strong>Bước 5:</strong> Liên hệ để tư vấn & báo giá chính thức</li>
                 </ul>
-            
-<img src="da2de8611999aa235538ac9966b6ccb1.jpg" alt="Minh họa" style="display:block; margin:40px auto; max-width:400px; width:100%;">
-</div>
+            </div>
             
             <div class="guide-section">
                 <h3>📋 Phân loại dịch vụ</h3>
@@ -496,26 +567,26 @@
                     </select>
                 </div>
                 
-                <div class="form-group">
-                    <label for="style">Chọn loại/style:</label>
-                    <select id="style" onchange="calculatePrice()">
-                        <option value="">-- Chọn loại --</option>
-                    </select>
+                <div id="serviceOptions" class="service-options">
+                    <!-- Service options will be dynamically added here -->
                 </div>
                 
                 <div class="form-group">
-                    <label for="quantity">Số lượng:</label>
-                    <input type="number" id="quantity" value="1" min="1" onchange="calculatePrice()">
-                </div>
-                
-                <div class="form-group">
-                    <label for="urgency">Tùy chọn bổ sung:</label>
-                    <select id="urgency" onchange="calculatePrice()">
-                        <option value="0">Không</option>
-                        <option value="0.5">Gấp (50% phụ phí)</option>
-                        <option value="0.3">Thêm ngôn ngữ (30% phụ phí)</option>
-                        <option value="0.2">Mockup 3D (20% phụ phí)</option>
-                    </select>
+                    <label>Tùy chọn bổ sung:</label>
+                    <div class="urgency-options">
+                        <div class="urgency-option">
+                            <input type="checkbox" id="urgent" onchange="calculatePrice()">
+                            <label for="urgent">Gấp (50% phụ phí)</label>
+                        </div>
+                        <div class="urgency-option">
+                            <input type="checkbox" id="multilingual" onchange="calculatePrice()">
+                            <label for="multilingual">Thêm ngôn ngữ (30% phụ phí)</label>
+                        </div>
+                        <div class="urgency-option">
+                            <input type="checkbox" id="mockup" onchange="calculatePrice()">
+                            <label for="mockup">Mockup 3D (20% phụ phí)</label>
+                        </div>
+                    </div>
                 </div>
                 
                 <button class="btn" onclick="calculatePrice()">Tính toán giá</button>
@@ -525,6 +596,8 @@
                     <div id="breakdown"></div>
                     <div class="total-price" id="totalPrice"></div>
                     <div class="timeline" id="timeline"></div>
+                    <p class="note">* Giá mang tính tham khảo, sẽ điều chỉnh theo yêu cầu thực tế.</p>
+                    <button class="btn export-btn" onclick="exportToPDF()">Xuất PDF</button>
                 </div>
             </div>
         </div>
@@ -607,16 +680,24 @@
         
         function updateStyleOptions() {
             const category = document.getElementById('category').value;
-            const styleSelect = document.getElementById('style');
+            const serviceOptionsContainer = document.getElementById('serviceOptions');
             
-            styleSelect.innerHTML = '<option value="">-- Chọn loại --</option>';
+            serviceOptionsContainer.innerHTML = '';
             
             if (category && serviceData[category]) {
                 Object.keys(serviceData[category].options).forEach(key => {
-                    const option = document.createElement('option');
-                    option.value = key;
-                    option.textContent = serviceData[category].options[key].name;
-                    styleSelect.appendChild(option);
+                    const option = serviceData[category].options[key];
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'service-option';
+                    optionElement.innerHTML = `
+                        <input type="checkbox" id="${key}" onchange="calculatePrice()">
+                        <div class="service-option-details">
+                            <label for="${key}" class="service-option-name">${option.name}</label>
+                            <input type="number" id="${key}-quantity" class="service-option-quantity" value="1" min="1" onchange="calculatePrice()">
+                            <span class="service-option-price">${option.price.toLocaleString('vi-VN')}đ</span>
+                        </div>
+                    `;
+                    serviceOptionsContainer.appendChild(optionElement);
                 });
             }
             
@@ -625,46 +706,129 @@
         
         function calculatePrice() {
             const category = document.getElementById('category').value;
-            const style = document.getElementById('style').value;
-            const quantity = parseInt(document.getElementById('quantity').value) || 1;
-            const urgency = parseFloat(document.getElementById('urgency').value) || 0;
             
-            if (!category || !style) {
+            if (!category || !serviceData[category]) {
                 document.getElementById('result').style.display = 'none';
                 return;
             }
             
-            const service = serviceData[category].options[style];
-            const basePrice = service.price;
-            const subtotal = basePrice * quantity;
-            const extraFee = subtotal * urgency;
-            const total = subtotal + extraFee;
+            let subtotal = 0;
+            let selectedServices = [];
+            let longestTime = { min: 0, max: 0 };
             
-            const breakdown = document.getElementById('breakdown');
-            const totalPrice = document.getElementById('totalPrice');
-            const timeline = document.getElementById('timeline');
+            // Calculate base prices for selected services
+            Object.keys(serviceData[category].options).forEach(key => {
+                const checkbox = document.getElementById(key);
+                if (checkbox && checkbox.checked) {
+                    const quantityInput = document.getElementById(`${key}-quantity`);
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    const service = serviceData[category].options[key];
+                    const price = service.price * quantity;
+                    
+                    subtotal += price;
+                    selectedServices.push({
+                        name: service.name,
+                        quantity: quantity,
+                        price: price,
+                        time: service.time
+                    });
+                    
+                    // Calculate project timeline
+                    const timeRange = service.time.split('-').map(t => parseInt(t.match(/\d+/)[0]));
+                    if (timeRange.length === 1) {
+                        if (timeRange[0] > longestTime.max) {
+                            longestTime.min = longestTime.max = timeRange[0];
+                        }
+                    } else if (timeRange.length === 2) {
+                        if (timeRange[1] > longestTime.max) {
+                            longestTime.min = timeRange[0];
+                            longestTime.max = timeRange[1];
+                        }
+                    }
+                }
+            });
             
-            breakdown.innerHTML = `
-                <div class="price-item">
-                    <span class="price-label">${service.name} x ${quantity}</span>
-                    <span class="price-value">${basePrice.toLocaleString('vi-VN')}đ</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-label">Subtotal</span>
-                    <span class="price-value">${subtotal.toLocaleString('vi-VN')}đ</span>
-                </div>
-                ${extraFee > 0 ? `
-                <div class="price-item">
-                    <span class="price-label">Phụ phí (${(urgency * 100).toFixed(0)}%)</span>
-                    <span class="price-value">+${extraFee.toLocaleString('vi-VN')}đ</span>
-                </div>
-                ` : ''}
-            `;
+            // Calculate additional fees
+            let additionalFees = [];
+            let totalAdditionalFee = 0;
             
-            totalPrice.textContent = `${total.toLocaleString('vi-VN')}đ`;
-            timeline.innerHTML = `<strong>⏱️ Thời gian dự kiến:</strong> ${service.time}`;
+            if (document.getElementById('urgent').checked) {
+                const urgentFee = subtotal * 0.5;
+                additionalFees.push({ name: 'Gấp (50%)', fee: urgentFee });
+                totalAdditionalFee += urgentFee;
+            }
             
-            document.getElementById('result').style.display = 'block';
+            if (document.getElementById('multilingual').checked) {
+                const multilingualFee = subtotal * 0.3;
+                additionalFees.push({ name: 'Thêm ngôn ngữ (30%)', fee: multilingualFee });
+                totalAdditionalFee += multilingualFee;
+            }
+            
+            if (document.getElementById('mockup').checked) {
+                const mockupFee = subtotal * 0.2;
+                additionalFees.push({ name: 'Mockup 3D (20%)', fee: mockupFee });
+                totalAdditionalFee += mockupFee;
+            }
+            
+            const total = subtotal + totalAdditionalFee;
+            
+            // Display results
+            if (selectedServices.length > 0) {
+                const breakdown = document.getElementById('breakdown');
+                const totalPrice = document.getElementById('totalPrice');
+                const timeline = document.getElementById('timeline');
+                
+                let breakdownHTML = '';
+                
+                // Services breakdown
+                selectedServices.forEach(service => {
+                    breakdownHTML += `
+                        <div class="price-item">
+                            <span class="price-label">${service.name} x ${service.quantity}</span>
+                            <span class="price-value">${service.price.toLocaleString('vi-VN')}đ</span>
+                        </div>
+                    `;
+                });
+                
+                // Subtotal
+                breakdownHTML += `
+                    <div class="price-item">
+                        <span class="price-label">Tổng phí dịch vụ</span>
+                        <span class="price-value">${subtotal.toLocaleString('vi-VN')}đ</span>
+                    </div>
+                `;
+                
+                // Additional fees
+                additionalFees.forEach(fee => {
+                    breakdownHTML += `
+                        <div class="price-item">
+                            <span class="price-label">${fee.name}</span>
+                            <span class="price-value">+${fee.fee.toLocaleString('vi-VN')}đ</span>
+                        </div>
+                    `;
+                });
+                
+                breakdown.innerHTML = breakdownHTML;
+                totalPrice.textContent = `${total.toLocaleString('vi-VN')}đ`;
+                
+                // Timeline
+                let timeText = '';
+                if (longestTime.min === longestTime.max) {
+                    timeText = `${longestTime.max} ngày`;
+                } else {
+                    timeText = `${longestTime.min}-${longestTime.max} ngày`;
+                }
+                
+                timeline.innerHTML = `<strong>⏱️ Thời gian dự kiến:</strong> ${timeText}`;
+                
+                document.getElementById('result').style.display = 'block';
+            } else {
+                document.getElementById('result').style.display = 'none';
+            }
+        }
+        
+        function exportToPDF() {
+            window.print();
         }
     </script>
 </body>
