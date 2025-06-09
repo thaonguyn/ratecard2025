@@ -6,7 +6,7 @@
     <title>Rate Card 2025</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,17 +15,652 @@
         }
         
         body {
-            font-family: 'Manrope', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             background: linear-gradient(135deg, #f8f9ff 0%, #e8f4f8 100%);
             color: #2c3e50;
             line-height: 1.6;
             padding: 20px;
         }
         
-        // ... existing code ...
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #CEEFF6 0%, #a8c8dd 100%);
+            padding: 40px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #F6F6F2;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #2c3e50;
+            border-bottom: 3px solid #CEEFF6;
+        }
+        
+        .tab:hover {
+            background: #e8f0fe;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 40px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .price-card {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .price-card:hover {
+            border-color: #CEEFF6;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .price-card h3 {
+            color: #7FB6F1;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #CEEFF6;
+            font-weight: 700;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e8f0fe;
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .price-label {
+            font-weight: 500;
+            color: #34495e;
+        }
+        
+        .price-value {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .calculator {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e8f0fe;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+        
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #CEEFF6;
+        }
+        
+        .result {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 2px solid #CEEFF6;
+        }
+        
+        .result h3 {
+            color: #7FB6F1;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .total-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #27ae60;
+            margin: 20px 0;
+        }
+        
+        .timeline {
+            background: #e8f4f8;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .guide-section {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .guide-section h3 {
+            color: #7FB6F1;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: guide-counter;
+        }
+        
+        .guide-list li {
+            padding: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            counter-increment: guide-counter;
+        }
+        
+        .guide-list li:before {
+            content: counter(guide-counter) ".";
+            position: absolute;
+            left: 0;
+            color: #7FB6F1;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .guide-list li strong {
+            color: #7FB6F1;
+            font-weight: 700;
+        }
+        
+        .highlight {
+            background: #9DD876;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #7FB6F1;
+        }
+        
+        .highlight h3 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .highlight p strong {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #CEEFF6 0%, #a8c8dd 100%);
+            color: #2c3e50;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
-    // ... existing code ...
+    <div class="container">
+        <div class="header">
+            <h1>Rate Card</h1>
+            <p>2025</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab(0)">Hướng dẫn sử dụng</button>
+            <button class="tab" onclick="showTab(1)">Bảng giá chi tiết</button>
+            <button class="tab" onclick="showTab(2)">Tính giá tự động</button>
+        </div>
+        
+        <div class="tab-content active">
+            <div class="guide-section">
+                <h3>🎯 Cách sử dụng Rate Card</h3>
+                <ul class="guide-list">
+                    <li><strong>Bước 1:</strong> Xem bảng giá chi tiết để hiểu rõ các hạng mục dịch vụ</li>
+                    <li><strong>Bước 2:</strong> Sử dụng công cụ tính giá tự động để ước tính chi phí</li>
+                    <li><strong>Bước 3:</strong> Chọn style phù hợp với yêu cầu dự án</li>
+                    <li><strong>Bước 4:</strong> Điều chỉnh số lượng và tùy chọn bổ sung</li>
+                </ul>
+            </div>
+            
+            <div class="guide-section">
+                <h3>📋 Phân loại dịch vụ</h3>
+                <ul class="guide-list">
+                    <li><strong>Social Media:</strong> Post, story, banner, cover cho các platform</li>
+                    <li><strong>In ấn:</strong> POSM, menu, brochure, catalog, tờ rơi</li>
+                    <li><strong>Editorial:</strong> Layout tạp chí, sách, báo cáo, presentation</li>
+                    <li><strong>Branding:</strong> Logo, bộ nhận diện thương hiệu, guideline</li>
+                    <li><strong>Packaging:</strong> Thiết kế bao bì, nhãn sản phẩm, hộp đựng</li>
+                    <li><strong>Illustration:</strong> Mascot, icon, tranh minh họa, sticker</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <h3>💡 Lưu ý quan trọng</h3>
+                <p><strong>Giá cả có thể thay đổi tùy theo:</strong> Độ phức tạp dự án, thời gian giao hàng, số lần chỉnh sửa, yêu cầu đặc biệt. Báo giá chính thức sẽ được cung cấp sau khi trao đổi chi tiết về yêu cầu dự án.</p>
+            </div>
+        </div>
+        
+        <div class="tab-content">
+            <div class="price-grid">
+                <div class="price-card">
+                    <h3>🎨 Social Media Design</h3>
+                    <div class="price-item">
+                        <span class="price-label">Post đơn giản</span>
+                        <span class="price-value">150,000đ/bài</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Post phức tạp</span>
+                        <span class="price-value">250,000đ/bài</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Story template</span>
+                        <span class="price-value">100,000đ/bài</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Gói 30 posts/tháng</span>
+                        <span class="price-value">4,500,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Cover Facebook</span>
+                        <span class="price-value">300,000đ</span>
+                    </div>
+                </div>
+                
+                <div class="price-card">
+                    <h3>📄 In ấn & POSM</h3>
+                    <div class="price-item">
+                        <span class="price-label">Tờ rơi A4</span>
+                        <span class="price-value">400,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Brochure 3 gấp</span>
+                        <span class="price-value">600,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Menu 2 trang</span>
+                        <span class="price-value">800,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Catalog (per trang)</span>
+                        <span class="price-value">200,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Standee/Banner</span>
+                        <span class="price-value">500,000đ</span>
+                    </div>
+                </div>
+                
+                <div class="price-card">
+                    <h3>📚 Editorial Design</h3>
+                    <div class="price-item">
+                        <span class="price-label">Layout tạp chí (per trang)</span>
+                        <span class="price-value">300,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Báo cáo thường niên (per trang)</span>
+                        <span class="price-value">400,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Presentation template</span>
+                        <span class="price-value">150,000đ/slide</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">E-book design (per trang)</span>
+                        <span class="price-value">250,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Gói 20 trang editorial</span>
+                        <span class="price-value">5,000,000đ</span>
+                    </div>
+                </div>
+                
+                <div class="price-card">
+                    <h3>🏷️ Branding & Identity</h3>
+                    <div class="price-item">
+                        <span class="price-label">Logo đơn giản</span>
+                        <span class="price-value">2,000,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Logo phức tạp</span>
+                        <span class="price-value">3,500,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Business card</span>
+                        <span class="price-value">400,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Letterhead</span>
+                        <span class="price-value">300,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Brand guideline (10 trang)</span>
+                        <span class="price-value">5,000,000đ</span>
+                    </div>
+                </div>
+                
+                <div class="price-card">
+                    <h3>📦 Packaging Design</h3>
+                    <div class="price-item">
+                        <span class="price-label">Label sản phẩm</span>
+                        <span class="price-value">600,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Hộp đựng đơn giản</span>
+                        <span class="price-value">1,200,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Hộp đựng phức tạp</span>
+                        <span class="price-value">2,000,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Túi paper bag</span>
+                        <span class="price-value">800,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Gói 5 packaging</span>
+                        <span class="price-value">4,500,000đ</span>
+                    </div>
+                </div>
+                
+                <div class="price-card">
+                    <h3>✏️ Illustration</h3>
+                    <div class="price-item">
+                        <span class="price-label">Icon set (10 icons)</span>
+                        <span class="price-value">1,000,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Mascot character</span>
+                        <span class="price-value">2,500,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Tranh minh họa đơn giản</span>
+                        <span class="price-value">800,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Tranh minh họa phức tạp</span>
+                        <span class="price-value">1,500,000đ</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Sticker set (20 stickers)</span>
+                        <span class="price-value">2,000,000đ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content">
+            <div class="calculator">
+                <h3>💰 Công cụ tính giá tự động</h3>
+                
+                <div class="form-group">
+                    <label for="category">Chọn hạng mục dịch vụ:</label>
+                    <select id="category" onchange="updateStyleOptions()">
+                        <option value="">-- Chọn hạng mục --</option>
+                        <option value="social">Social Media Design</option>
+                        <option value="print">In ấn & POSM</option>
+                        <option value="editorial">Editorial Design</option>
+                        <option value="branding">Branding & Identity</option>
+                        <option value="packaging">Packaging Design</option>
+                        <option value="illustration">Illustration</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="style">Chọn loại/style:</label>
+                    <select id="style" onchange="calculatePrice()">
+                        <option value="">-- Chọn loại --</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Số lượng:</label>
+                    <input type="number" id="quantity" value="1" min="1" onchange="calculatePrice()">
+                </div>
+                
+                <div class="form-group">
+                    <label for="urgency">Tùy chọn bổ sung:</label>
+                    <select id="urgency" onchange="calculatePrice()">
+                        <option value="0">Không</option>
+                        <option value="0.5">Gấp (50% phụ phí)</option>
+                        <option value="0.3">Thêm ngôn ngữ (30% phụ phí)</option>
+                        <option value="0.2">Mockup 3D (20% phụ phí)</option>
+                    </select>
+                </div>
+                
+                <button class="btn" onclick="calculatePrice()">Tính toán giá</button>
+                
+                <div class="result" id="result" style="display: none;">
+                    <h3>Kết quả tính toán</h3>
+                    <div id="breakdown"></div>
+                    <div class="total-price" id="totalPrice"></div>
+                    <div class="timeline" id="timeline"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const serviceData = {
+            social: {
+                name: "Social Media Design",
+                options: {
+                    "post-simple": { name: "Post đơn giản", price: 150000, time: "1-2 ngày" },
+                    "post-complex": { name: "Post phức tạp", price: 250000, time: "2-3 ngày" },
+                    "story": { name: "Story template", price: 100000, time: "1 ngày" },
+                    "cover": { name: "Cover Facebook", price: 300000, time: "2-3 ngày" },
+                    "package-30": { name: "Gói 30 posts/tháng", price: 4500000, time: "30 ngày" }
+                }
+            },
+            print: {
+                name: "In ấn & POSM",
+                options: {
+                    "flyer": { name: "Tờ rơi A4", price: 400000, time: "2-3 ngày" },
+                    "brochure": { name: "Brochure 3 gấp", price: 600000, time: "3-4 ngày" },
+                    "menu": { name: "Menu 2 trang", price: 800000, time: "3-5 ngày" },
+                    "catalog": { name: "Catalog (per trang)", price: 200000, time: "1-2 ngày" },
+                    "banner": { name: "Standee/Banner", price: 500000, time: "2-3 ngày" }
+                }
+            },
+            editorial: {
+                name: "Editorial Design",
+                options: {
+                    "magazine": { name: "Layout tạp chí (per trang)", price: 300000, time: "2-3 ngày" },
+                    "report": { name: "Báo cáo thường niên (per trang)", price: 400000, time: "2-4 ngày" },
+                    "presentation": { name: "Presentation template", price: 150000, time: "1-2 ngày" },
+                    "ebook": { name: "E-book design (per trang)", price: 250000, time: "1-2 ngày" },
+                    "package-20": { name: "Gói 20 trang editorial", price: 5000000, time: "15-20 ngày" }
+                }
+            },
+            branding: {
+                name: "Branding & Identity",
+                options: {
+                    "logo-simple": { name: "Logo đơn giản", price: 2000000, time: "5-7 ngày" },
+                    "logo-complex": { name: "Logo phức tạp", price: 3500000, time: "7-10 ngày" },
+                    "business-card": { name: "Business card", price: 400000, time: "2-3 ngày" },
+                    "letterhead": { name: "Letterhead", price: 300000, time: "1-2 ngày" },
+                    "guideline": { name: "Brand guideline (10 trang)", price: 5000000, time: "10-15 ngày" }
+                }
+            },
+            packaging: {
+                name: "Packaging Design",
+                options: {
+                    "label": { name: "Label sản phẩm", price: 600000, time: "3-4 ngày" },
+                    "box-simple": { name: "Hộp đựng đơn giản", price: 1200000, time: "4-6 ngày" },
+                    "box-complex": { name: "Hộp đựng phức tạp", price: 2000000, time: "6-8 ngày" },
+                    "paper-bag": { name: "Túi paper bag", price: 800000, time: "3-5 ngày" },
+                    "package-5": { name: "Gói 5 packaging", price: 4500000, time: "15-20 ngày" }
+                }
+            },
+            illustration: {
+                name: "Illustration",
+                options: {
+                    "icon-set": { name: "Icon set (10 icons)", price: 1000000, time: "5-7 ngày" },
+                    "mascot": { name: "Mascot character", price: 2500000, time: "7-10 ngày" },
+                    "simple-illustration": { name: "Tranh minh họa đơn giản", price: 800000, time: "3-5 ngày" },
+                    "complex-illustration": { name: "Tranh minh họa phức tạp", price: 1500000, time: "5-8 ngày" },
+                    "sticker-set": { name: "Sticker set (20 stickers)", price: 2000000, time: "7-10 ngày" }
+                }
+            }
+        };
+        
+        function showTab(index) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            tabs[index].classList.add('active');
+            contents[index].classList.add('active');
+        }
+        
+        function updateStyleOptions() {
+            const category = document.getElementById('category').value;
+            const styleSelect = document.getElementById('style');
+            
+            styleSelect.innerHTML = '<option value="">-- Chọn loại --</option>';
+            
+            if (category && serviceData[category]) {
+                Object.keys(serviceData[category].options).forEach(key => {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = serviceData[category].options[key].name;
+                    styleSelect.appendChild(option);
+                });
+            }
+            
+            document.getElementById('result').style.display = 'none';
+        }
+        
+        function calculatePrice() {
+            const category = document.getElementById('category').value;
+            const style = document.getElementById('style').value;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const urgency = parseFloat(document.getElementById('urgency').value) || 0;
+            
+            if (!category || !style) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+            
+            const service = serviceData[category].options[style];
+            const basePrice = service.price;
+            const subtotal = basePrice * quantity;
+            const extraFee = subtotal * urgency;
+            const total = subtotal + extraFee;
+            
+            const breakdown = document.getElementById('breakdown');
+            const totalPrice = document.getElementById('totalPrice');
+            const timeline = document.getElementById('timeline');
+            
+            breakdown.innerHTML = `
+                <div class="price-item">
+                    <span class="price-label">${service.name} x ${quantity}</span>
+                    <span class="price-value">${basePrice.toLocaleString('vi-VN')}đ</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Subtotal</span>
+                    <span class="price-value">${subtotal.toLocaleString('vi-VN')}đ</span>
+                </div>
+                ${extraFee > 0 ? `
+                <div class="price-item">
+                    <span class="price-label">Phụ phí (${(urgency * 100).toFixed(0)}%)</span>
+                    <span class="price-value">+${extraFee.toLocaleString('vi-VN')}đ</span>
+                </div>
+                ` : ''}
+            `;
+            
+            totalPrice.textContent = `${total.toLocaleString('vi-VN')}đ`;
+            timeline.innerHTML = `<strong>⏱️ Thời gian dự kiến:</strong> ${service.time}`;
+            
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
