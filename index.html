@@ -4,831 +4,686 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rate Card 2025</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --white: #FFFFFF;
+            --blue: #BFDBF7;
+            --green: #A4CB24;
+            --yellow: #FCD901;
+            --text-color: #333333;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-variant-numeric: normal;
-            font-feature-settings: "zero" 0;
+            font-family: 'Manrope', sans-serif;
         }
         
         body {
-            font-family: 'Manrope', sans-serif;
-            background: linear-gradient(135deg, #f8f9ff 0%, #e8f4f8 100%);
-            color: #2c3e50;
+            background-color: var(--white);
+            color: var(--text-color);
             line-height: 1.6;
             padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #BFDBF7 0%, #a8c8dd 100%);
-            padding: 40px;
-            text-align: center;
-            color: #2c3e50;
-        }
-        
-        .header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-transform: capitalize;
-            letter-spacing: 2px;
-        }
-        
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.7;
-            font-weight: 300;
-        }
-        
-        .tabs {
-            display: flex;
-            background: #F6F6F2;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .tab {
-            flex: 1;
-            padding: 15px 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #666;
-            transition: all 0.3s ease;
-            font-family: 'Manrope', sans-serif;
-        }
-        
-        .tab.active {
-            background: white;
-            color: #2c3e50;
-            border-bottom: 3px solid #BFDBF7;
-        }
-        
-        .tab:hover {
-            background: #e8f0fe;
-        }
-        
-        .tab-content {
-            display: none;
-            padding: 40px;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .price-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .price-card {
-            background: #f8f9ff;
-            border-radius: 15px;
-            padding: 30px;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-        
-        .price-card:hover {
-            border-color: #BFDBF7;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .price-card h3 {
-            color: #BFDBF7;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #BFDBF7;
-            font-weight: 700;
-        }
-        
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e8f0fe;
-        }
-        
-        .price-item:last-child {
-            border-bottom: none;
-        }
-        
-        .price-label {
-            font-weight: 500;
-            color: #34495e;
-        }
-        
-        .price-value {
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        
-        .calculator {
-            background: #f8f9ff;
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .form-group select,
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e8f0fe;
+            background-color: white;
             border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: 'Manrope', sans-serif;
-        }
-        
-        .form-group select:focus,
-        .form-group input:focus {
-            outline: none;
-            border-color: #BFDBF7;
-        }
-        
-        .result {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 30px;
-            border: 2px solid #BFDBF7;
-        }
-        
-        .result h3 {
-            color: #BFDBF7;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .total-price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #27ae60;
-            margin: 20px 0;
-        }
-        
-        .timeline {
-            background: #e8f4f8;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
-        
-        .guide-section {
-            background: #f8f9ff;
-            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             padding: 30px;
             margin-bottom: 30px;
         }
         
-        .guide-section h3 {
-            color: #BFDBF7;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            font-weight: 700;
+        h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: var(--text-color);
         }
         
-        .guide-list {
-            list-style: none;
-            padding: 0;
-            counter-reset: guide-counter;
+        h2 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 25px;
         }
         
-        .guide-list li {
-            padding: 10px 0;
-            padding-left: 35px;
-            position: relative;
-            counter-increment: guide-counter;
+        h3 {
+            font-size: 20px;
+            margin: 25px 0 15px;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--blue);
+            padding-bottom: 8px;
         }
         
-        .guide-list li:before {
-            content: counter(guide-counter) ".";
-            position: absolute;
-            left: 0;
-            color: #BFDBF7;
-            font-weight: bold;
-            font-size: 1.1rem;
+        .section {
+            margin-bottom: 30px;
         }
         
-        .guide-list li strong {
-            color: #BFDBF7;
-            font-weight: 700;
-        }
-        
-        .highlight {
-            background: #A4CB24;
-            padding: 20px;
-            border-radius: 10px;
+        .guide-steps {
             margin: 20px 0;
-            border-left: 4px solid #BFDBF7;
         }
         
-        .highlight h3 {
-            color: #2c3e50;
-            font-weight: 700;
+        .guide-steps div {
             margin-bottom: 10px;
-        }
-        
-        .highlight p strong {
-            color: #2c3e50;
-            font-weight: 700;
-        }
-        
-        .btn {
-            background: linear-gradient(135deg, #BFDBF7 0%, #a8c8dd 100%);
-            color: #2c3e50;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Manrope', sans-serif;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .service-options {
-            margin-top: 20px;
-        }
-        
-        .service-option {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 8px;
-            background: #f0f5ff;
+            align-items: flex-start;
         }
         
-        .service-option input[type="checkbox"] {
+        .guide-steps span {
+            background-color: var(--blue);
+            color: var(--text-color);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             margin-right: 10px;
+            font-weight: 600;
+            flex-shrink: 0;
         }
         
-        .service-option-details {
-            display: flex;
-            flex: 1;
-            justify-content: space-between;
-            align-items: center;
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
         }
         
-        .service-option-name {
+        .price-table th {
+            background-color: var(--blue);
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .price-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .price-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .calculator {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .service-category {
+            margin-bottom: 20px;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        select[multiple] {
+            height: auto;
+            min-height: 120px;
+        }
+        
+        label {
+            display: block;
+            margin-top: 15px;
             font-weight: 500;
         }
         
-        .service-option-quantity {
-            width: 80px;
-            padding: 5px 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 0 10px;
+        .quantity-inputs {
+            display: none;
+            margin-top: 15px;
         }
         
-        .service-option-price {
-            font-weight: 600;
-            min-width: 120px;
-            text-align: right;
+        .quantity-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
         }
         
-        .urgency-options {
+        .quantity-row label {
+            flex: 2;
+            margin: 0;
+        }
+        
+        .quantity-row input {
+            flex: 1;
+            margin: 0 0 0 10px;
+        }
+        
+        .surcharge {
+            margin-top: 20px;
+        }
+        
+        .surcharge-options {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 10px;
         }
         
-        .urgency-option {
+        .surcharge-option {
             display: flex;
             align-items: center;
-            padding: 8px 15px;
-            background: #f0f5ff;
-            border-radius: 8px;
         }
         
-        .urgency-option input[type="checkbox"] {
-            margin-right: 8px;
+        .surcharge-option input {
+            width: auto;
+            margin-right: 5px;
+        }
+        
+        .result {
+            background-color: var(--blue);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .result h3 {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 0;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
         }
         
         .note {
             font-style: italic;
+            margin-top: 20px;
+            font-size: 14px;
             color: #666;
-            margin-top: 15px;
         }
         
-        .export-btn {
+        .print-btn {
+            background-color: var(--green);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
             margin-top: 20px;
-            background: #FCD901;
-            color: #333;
+            transition: background-color 0.3s;
+        }
+        
+        .print-btn:hover {
+            background-color: #93b821;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 15px;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .surcharge-options {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            select, input {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Rate Card</h1>
-            <p>2025</p>
+        <h1>Rate Card</h1>
+        <h2>2025</h2>
+        
+        <div class="section">
+            <h3>Tổng quan & hướng dẫn sử dụng</h3>
+            <p>Bảng giá dịch vụ thiết kế dành cho designer có 6 năm kinh nghiệm trở lên.</p>
+            
+            <div class="guide-steps">
+                <div><span>1</span> Xem bảng giá chi tiết.</div>
+                <div><span>2</span> Dùng công cụ tính giá tự động.</div>
+                <div><span>3</span> Chọn style phù hợp với yêu cầu.</div>
+                <div><span>4</span> Điều chỉnh số lượng và tùy chọn bổ sung.</div>
+                <div><span>5</span> Liên hệ để tư vấn & báo giá chính thức.</div>
+            </div>
         </div>
         
-        <div class="tabs">
-            <button class="tab active" onclick="showTab(0)">Hướng dẫn sử dụng</button>
-            <button class="tab" onclick="showTab(1)">Bảng giá chi tiết</button>
-            <button class="tab" onclick="showTab(2)">Tính giá tự động</button>
-        </div>
-        
-        <div class="tab-content active">
-            <div class="guide-section">
-                <h3>🎯 Cách sử dụng Rate Card</h3>
-                <ul class="guide-list">
-                    <li><strong>Bước 1:</strong> Xem bảng giá chi tiết để hiểu rõ các hạng mục dịch vụ</li>
-                    <li><strong>Bước 2:</strong> Sử dụng công cụ tính giá tự động để ước tính chi phí</li>
-                    <li><strong>Bước 3:</strong> Chọn style phù hợp với yêu cầu dự án</li>
-                    <li><strong>Bước 4:</strong> Điều chỉnh số lượng và tùy chọn bổ sung</li>
-                    <li><strong>Bước 5:</strong> Liên hệ để tư vấn & báo giá chính thức</li>
-                </ul>
+        <div class="section">
+            <h3>Bảng giá dịch vụ</h3>
+            
+            <div class="service-category">
+                <h4>Social Media</h4>
+                <table class="price-table">
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Đơn giá</th>
+                    </tr>
+                    <tr>
+                        <td>Post đơn giản/ resize post</td>
+                        <td>150.000đ / bài</td>
+                    </tr>
+                    <tr>
+                        <td>Post phức tạp</td>
+                        <td>400.000đ / bài</td>
+                    </tr>
+                    <tr>
+                        <td>Story template</td>
+                        <td>200.000đ / bài</td>
+                    </tr>
+                    <tr>
+                        <td>Cover Facebook</td>
+                        <td>300.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Gói 30 posts / tháng</td>
+                        <td>4.500.000đ</td>
+                    </tr>
+                </table>
             </div>
             
-            <div class="guide-section">
-                <h3>📋 Phân loại dịch vụ</h3>
-                <ul class="guide-list">
-                    <li><strong>Social Media:</strong> Post, story, banner, cover cho các platform</li>
-                    <li><strong>In ấn:</strong> POSM, menu, brochure, catalog, tờ rơi</li>
-                    <li><strong>Editorial:</strong> Layout tạp chí, sách, báo cáo, presentation</li>
-                    <li><strong>Branding:</strong> Logo, bộ nhận diện thương hiệu, guideline</li>
-                    <li><strong>Packaging:</strong> Thiết kế bao bì, nhãn sản phẩm, hộp đựng</li>
-                    <li><strong>Illustration:</strong> Mascot, icon, tranh minh họa, sticker</li>
-                </ul>
+            <div class="service-category">
+                <h4>In ấn</h4>
+                <table class="price-table">
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Đơn giá</th>
+                    </tr>
+                    <tr>
+                        <td>Tờ rơi A4</td>
+                        <td>400.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Brochure 3 gấp</td>
+                        <td>600.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Menu 2 trang</td>
+                        <td>800.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Catalog</td>
+                        <td>200.000đ / trang</td>
+                    </tr>
+                    <tr>
+                        <td>Standee / Banner</td>
+                        <td>500.000đ</td>
+                    </tr>
+                </table>
             </div>
             
-            <div class="highlight">
-                <h3>💡 Lưu ý quan trọng</h3>
-                <p><strong>Giá cả có thể thay đổi tùy theo:</strong> Độ phức tạp dự án, thời gian giao hàng, số lần chỉnh sửa, yêu cầu đặc biệt. Báo giá chính thức sẽ được cung cấp sau khi trao đổi chi tiết về yêu cầu dự án.</p>
+            <div class="service-category">
+                <h4>Branding</h4>
+                <table class="price-table">
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Đơn giá</th>
+                    </tr>
+                    <tr>
+                        <td>Logo đơn giản</td>
+                        <td>2.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Logo phức tạp</td>
+                        <td>3.500.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Business card</td>
+                        <td>400.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Letterhead</td>
+                        <td>300.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Brand guideline (10 trang)</td>
+                        <td>5.000.000đ</td>
+                    </tr>
+                </table>
             </div>
+            
+            <div class="service-category">
+                <h4>Packaging</h4>
+                <table class="price-table">
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Đơn giá</th>
+                    </tr>
+                    <tr>
+                        <td>Label sản phẩm</td>
+                        <td>600.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Hộp đựng đơn giản</td>
+                        <td>1.200.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Hộp đựng phức tạp</td>
+                        <td>2.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Túi paper bag</td>
+                        <td>800.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Gói 5 packaging</td>
+                        <td>4.500.000đ</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="service-category">
+                <h4>Illustration</h4>
+                <table class="price-table">
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Đơn giá</th>
+                    </tr>
+                    <tr>
+                        <td>Icon set (10 icons)</td>
+                        <td>1.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Mascot character</td>
+                        <td>2.500.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Tranh minh họa đơn giản (đen trắng)</td>
+                        <td>800.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Tranh minh họa phức tạp</td>
+                        <td>1.500.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Sticker set (20 stickers)</td>
+                        <td>2.000.000đ</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <p class="note">Giá mang tính tham khảo, có thể thay đổi tùy theo:</p>
+            <ul class="note">
+                <li>Độ phức tạp dự án</li>
+                <li>Thời gian gấp</li>
+                <li>Yêu cầu chỉnh sửa</li>
+                <li>Thêm ngôn ngữ, mockup, v.v.</li>
+            </ul>
+            <p class="note">Báo giá chính thức sẽ được gửi sau khi trao đổi và nhận đầy đủ brief.</p>
         </div>
         
-        <div class="tab-content">
-            <div class="price-grid">
-                <div class="price-card">
-                    <h3>🎨 Social Media Design</h3>
-                    <div class="price-item">
-                        <span class="price-label">Post đơn giản</span>
-                        <span class="price-value">150,000đ/bài</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Post phức tạp</span>
-                        <span class="price-value">250,000đ/bài</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Story template</span>
-                        <span class="price-value">100,000đ/bài</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Gói 30 posts/tháng</span>
-                        <span class="price-value">4,500,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Cover Facebook</span>
-                        <span class="price-value">300,000đ</span>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <h3>📄 In ấn & POSM</h3>
-                    <div class="price-item">
-                        <span class="price-label">Tờ rơi A4</span>
-                        <span class="price-value">400,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Brochure 3 gấp</span>
-                        <span class="price-value">600,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Menu 2 trang</span>
-                        <span class="price-value">800,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Catalog (per trang)</span>
-                        <span class="price-value">200,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Standee/Banner</span>
-                        <span class="price-value">500,000đ</span>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <h3>📚 Editorial Design</h3>
-                    <div class="price-item">
-                        <span class="price-label">Layout tạp chí (per trang)</span>
-                        <span class="price-value">300,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Báo cáo thường niên (per trang)</span>
-                        <span class="price-value">400,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Presentation template</span>
-                        <span class="price-value">150,000đ/slide</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">E-book design (per trang)</span>
-                        <span class="price-value">250,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Gói 20 trang editorial</span>
-                        <span class="price-value">5,000,000đ</span>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <h3>🏷️ Branding & Identity</h3>
-                    <div class="price-item">
-                        <span class="price-label">Logo đơn giản</span>
-                        <span class="price-value">2,000,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Logo phức tạp</span>
-                        <span class="price-value">3,500,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Business card</span>
-                        <span class="price-value">400,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Letterhead</span>
-                        <span class="price-value">300,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Brand guideline (10 trang)</span>
-                        <span class="price-value">5,000,000đ</span>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <h3>📦 Packaging Design</h3>
-                    <div class="price-item">
-                        <span class="price-label">Label sản phẩm</span>
-                        <span class="price-value">600,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Hộp đựng đơn giản</span>
-                        <span class="price-value">1,200,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Hộp đựng phức tạp</span>
-                        <span class="price-value">2,000,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Túi paper bag</span>
-                        <span class="price-value">800,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Gói 5 packaging</span>
-                        <span class="price-value">4,500,000đ</span>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <h3>✏️ Illustration</h3>
-                    <div class="price-item">
-                        <span class="price-label">Icon set (10 icons)</span>
-                        <span class="price-value">1,000,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Mascot character</span>
-                        <span class="price-value">2,500,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Tranh minh họa đơn giản</span>
-                        <span class="price-value">800,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Tranh minh họa phức tạp</span>
-                        <span class="price-value">1,500,000đ</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="price-label">Sticker set (20 stickers)</span>
-                        <span class="price-value">2,000,000đ</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="tab-content">
+        <div class="section">
+            <h3>Công cụ tính giá tự động</h3>
+            
             <div class="calculator">
-                <h3>💰 Công cụ tính giá tự động</h3>
-                
-                <div class="form-group">
-                    <label for="category">Chọn hạng mục dịch vụ:</label>
-                    <select id="category" onchange="updateStyleOptions()">
+                <div class="service-category">
+                    <label for="category">Chọn hạng mục:</label>
+                    <select id="category">
                         <option value="">-- Chọn hạng mục --</option>
-                        <option value="social">Social Media Design</option>
-                        <option value="print">In ấn & POSM</option>
-                        <option value="editorial">Editorial Design</option>
-                        <option value="branding">Branding & Identity</option>
-                        <option value="packaging">Packaging Design</option>
+                        <option value="social">Social Media</option>
+                        <option value="print">In ấn</option>
+                        <option value="branding">Branding</option>
+                        <option value="packaging">Packaging</option>
                         <option value="illustration">Illustration</option>
                     </select>
-                </div>
-                
-                <div id="serviceOptions" class="service-options">
-                    <!-- Service options will be dynamically added here -->
-                </div>
-                
-                <div class="form-group">
-                    <label>Tùy chọn bổ sung:</label>
-                    <div class="urgency-options">
-                        <div class="urgency-option">
-                            <input type="checkbox" id="urgent" onchange="calculatePrice()">
-                            <label for="urgent">Gấp (50% phụ phí)</label>
-                        </div>
-                        <div class="urgency-option">
-                            <input type="checkbox" id="multilingual" onchange="calculatePrice()">
-                            <label for="multilingual">Thêm ngôn ngữ (30% phụ phí)</label>
-                        </div>
-                        <div class="urgency-option">
-                            <input type="checkbox" id="mockup" onchange="calculatePrice()">
-                            <label for="mockup">Mockup 3D (20% phụ phí)</label>
+                    
+                    <div id="social-services" class="service-options" style="display: none;">
+                        <label for="social-select">Chọn dịch vụ (giữ Ctrl để chọn nhiều):</label>
+                        <select id="social-select" multiple>
+                            <option value="post-simple" data-price="150000">Post đơn giản/ resize post - 150.000đ</option>
+                            <option value="post-complex" data-price="400000">Post phức tạp - 400.000đ</option>
+                            <option value="story" data-price="200000">Story template - 200.000đ</option>
+                            <option value="cover" data-price="300000">Cover Facebook - 300.000đ</option>
+                            <option value="package-30" data-price="4500000">Gói 30 posts / tháng - 4.500.000đ</option>
+                        </select>
+                    </div>
+                    
+                    <div id="print-services" class="service-options" style="display: none;">
+                        <label for="print-select">Chọn dịch vụ (giữ Ctrl để chọn nhiều):</label>
+                        <select id="print-select" multiple>
+                            <option value="flyer" data-price="400000">Tờ rơi A4 - 400.000đ</option>
+                            <option value="brochure" data-price="600000">Brochure 3 gấp - 600.000đ</option>
+                            <option value="menu" data-price="800000">Menu 2 trang - 800.000đ</option>
+                            <option value="catalog" data-price="200000">Catalog - 200.000đ / trang</option>
+                            <option value="standee" data-price="500000">Standee / Banner - 500.000đ</option>
+                        </select>
+                    </div>
+                    
+                    <div id="branding-services" class="service-options" style="display: none;">
+                        <label for="branding-select">Chọn dịch vụ (giữ Ctrl để chọn nhiều):</label>
+                        <select id="branding-select" multiple>
+                            <option value="logo-simple" data-price="2000000">Logo đơn giản - 2.000.000đ</option>
+                            <option value="logo-complex" data-price="3500000">Logo phức tạp - 3.500.000đ</option>
+                            <option value="business-card" data-price="400000">Business card - 400.000đ</option>
+                            <option value="letterhead" data-price="300000">Letterhead - 300.000đ</option>
+                            <option value="brand-guide" data-price="5000000">Brand guideline (10 trang) - 5.000.000đ</option>
+                        </select>
+                    </div>
+                    
+                    <div id="packaging-services" class="service-options" style="display: none;">
+                        <label for="packaging-select">Chọn dịch vụ (giữ Ctrl để chọn nhiều):</label>
+                        <select id="packaging-select" multiple>
+                            <option value="label" data-price="600000">Label sản phẩm - 600.000đ</option>
+                            <option value="box-simple" data-price="1200000">Hộp đựng đơn giản - 1.200.000đ</option>
+                            <option value="box-complex" data-price="2000000">Hộp đựng phức tạp - 2.000.000đ</option>
+                            <option value="paper-bag" data-price="800000">Túi paper bag - 800.000đ</option>
+                            <option value="package-5" data-price="4500000">Gói 5 packaging - 4.500.000đ</option>
+                        </select>
+                    </div>
+                    
+                    <div id="illustration-services" class="service-options" style="display: none;">
+                        <label for="illustration-select">Chọn dịch vụ (giữ Ctrl để chọn nhiều):</label>
+                        <select id="illustration-select" multiple>
+                            <option value="icon-set" data-price="1000000">Icon set (10 icons) - 1.000.000đ</option>
+                            <option value="mascot" data-price="2500000">Mascot character - 2.500.000đ</option>
+                            <option value="illustration-simple" data-price="800000">Tranh minh họa đơn giản (đen trắng) - 800.000đ</option>
+                            <option value="illustration-complex" data-price="1500000">Tranh minh họa phức tạp - 1.500.000đ</option>
+                            <option value="sticker-set" data-price="2000000">Sticker set (20 stickers) - 2.000.000đ</option>
+                        </select>
+                    </div>
+                    
+                    <div id="quantity-inputs" class="quantity-inputs">
+                        <!-- Quantity inputs will be dynamically added here -->
+                    </div>
+                    
+                    <div class="surcharge">
+                        <label>Tùy chọn phụ phí:</label>
+                        <div class="surcharge-options">
+                            <div class="surcharge-option">
+                                <input type="checkbox" id="urgent" data-rate="0.5">
+                                <label for="urgent">Gấp (50%)</label>
+                            </div>
+                            <div class="surcharge-option">
+                                <input type="checkbox" id="language" data-rate="0.3">
+                                <label for="language">Thêm ngôn ngữ (30%)</label>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <button class="btn" onclick="calculatePrice()">Tính toán giá</button>
-                
-                <div class="result" id="result" style="display: none;">
-                    <h3>Kết quả tính toán</h3>
-                    <div id="breakdown"></div>
-                    <div class="total-price" id="totalPrice"></div>
-                    <div class="timeline" id="timeline"></div>
-                    <p class="note">* Giá mang tính tham khảo, sẽ điều chỉnh theo yêu cầu thực tế.</p>
-                    <button class="btn export-btn" onclick="exportToPDF()">Xuất PDF</button>
+                <div class="result">
+                    <h3>Kết quả</h3>
+                    <div class="result-item">
+                        <strong>Tổng giá:</strong>
+                        <span id="total-price">0đ</span>
+                    </div>
+                    <div id="price-breakdown">
+                        <!-- Price breakdown will be dynamically added here -->
+                    </div>
+                    <div class="result-item">
+                        <strong>Thời gian thực hiện dự kiến:</strong>
+                        <span id="estimated-time">0 ngày</span>
+                    </div>
+                    <p class="note">Ghi chú: Giá mang tính tham khảo, sẽ điều chỉnh theo yêu cầu thực tế.</p>
                 </div>
             </div>
+            
+            <button class="print-btn" onclick="window.print()">Xuất PDF</button>
         </div>
     </div>
     
     <script>
-        const serviceData = {
-            social: {
-                name: "Social Media Design",
-                options: {
-                    "post-simple": { name: "Post đơn giản", price: 150000, time: "1-2 ngày" },
-                    "post-complex": { name: "Post phức tạp", price: 250000, time: "2-3 ngày" },
-                    "story": { name: "Story template", price: 100000, time: "1 ngày" },
-                    "cover": { name: "Cover Facebook", price: 300000, time: "2-3 ngày" },
-                    "package-30": { name: "Gói 30 posts/tháng", price: 4500000, time: "30 ngày" }
-                }
-            },
-            print: {
-                name: "In ấn & POSM",
-                options: {
-                    "flyer": { name: "Tờ rơi A4", price: 400000, time: "2-3 ngày" },
-                    "brochure": { name: "Brochure 3 gấp", price: 600000, time: "3-4 ngày" },
-                    "menu": { name: "Menu 2 trang", price: 800000, time: "3-5 ngày" },
-                    "catalog": { name: "Catalog (per trang)", price: 200000, time: "1-2 ngày" },
-                    "banner": { name: "Standee/Banner", price: 500000, time: "2-3 ngày" }
-                }
-            },
-            editorial: {
-                name: "Editorial Design",
-                options: {
-                    "magazine": { name: "Layout tạp chí (per trang)", price: 300000, time: "2-3 ngày" },
-                    "report": { name: "Báo cáo thường niên (per trang)", price: 400000, time: "2-4 ngày" },
-                    "presentation": { name: "Presentation template", price: 150000, time: "1-2 ngày" },
-                    "ebook": { name: "E-book design (per trang)", price: 250000, time: "1-2 ngày" },
-                    "package-20": { name: "Gói 20 trang editorial", price: 5000000, time: "15-20 ngày" }
-                }
-            },
-            branding: {
-                name: "Branding & Identity",
-                options: {
-                    "logo-simple": { name: "Logo đơn giản", price: 2000000, time: "5-7 ngày" },
-                    "logo-complex": { name: "Logo phức tạp", price: 3500000, time: "7-10 ngày" },
-                    "business-card": { name: "Business card", price: 400000, time: "2-3 ngày" },
-                    "letterhead": { name: "Letterhead", price: 300000, time: "1-2 ngày" },
-                    "guideline": { name: "Brand guideline (10 trang)", price: 5000000, time: "10-15 ngày" }
-                }
-            },
-            packaging: {
-                name: "Packaging Design",
-                options: {
-                    "label": { name: "Label sản phẩm", price: 600000, time: "3-4 ngày" },
-                    "box-simple": { name: "Hộp đựng đơn giản", price: 1200000, time: "4-6 ngày" },
-                    "box-complex": { name: "Hộp đựng phức tạp", price: 2000000, time: "6-8 ngày" },
-                    "paper-bag": { name: "Túi paper bag", price: 800000, time: "3-5 ngày" },
-                    "package-5": { name: "Gói 5 packaging", price: 4500000, time: "15-20 ngày" }
-                }
-            },
-            illustration: {
-                name: "Illustration",
-                options: {
-                    "icon-set": { name: "Icon set (10 icons)", price: 1000000, time: "5-7 ngày" },
-                    "mascot": { name: "Mascot character", price: 2500000, time: "7-10 ngày" },
-                    "simple-illustration": { name: "Tranh minh họa đơn giản", price: 800000, time: "3-5 ngày" },
-                    "complex-illustration": { name: "Tranh minh họa phức tạp", price: 1500000, time: "5-8 ngày" },
-                    "sticker-set": { name: "Sticker set (20 stickers)", price: 2000000, time: "7-10 ngày" }
-                }
-            }
-        };
-        
-        function showTab(index) {
-            const tabs = document.querySelectorAll('.tab');
-            const contents = document.querySelectorAll('.tab-content');
+        // Lắng nghe sự kiện thay đổi danh mục
+        document.getElementById('category').addEventListener('change', function() {
+            // Ẩn tất cả các tùy chọn dịch vụ
+            document.querySelectorAll('.service-options').forEach(function(el) {
+                el.style.display = 'none';
+            });
             
-            tabs.forEach(tab => tab.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
-            
-            tabs[index].classList.add('active');
-            contents[index].classList.add('active');
-        }
-        
-        function updateStyleOptions() {
-            const category = document.getElementById('category').value;
-            const serviceOptionsContainer = document.getElementById('serviceOptions');
-            
-            serviceOptionsContainer.innerHTML = '';
-            
-            if (category && serviceData[category]) {
-                Object.keys(serviceData[category].options).forEach(key => {
-                    const option = serviceData[category].options[key];
-                    const optionElement = document.createElement('div');
-                    optionElement.className = 'service-option';
-                    optionElement.innerHTML = `
-                        <input type="checkbox" id="${key}" onchange="calculatePrice()">
-                        <div class="service-option-details">
-                            <label for="${key}" class="service-option-name">${option.name}</label>
-                            <input type="number" id="${key}-quantity" class="service-option-quantity" value="1" min="1" onchange="calculatePrice()">
-                            <span class="service-option-price">${option.price.toLocaleString('vi-VN')}đ</span>
-                        </div>
-                    `;
-                    serviceOptionsContainer.appendChild(optionElement);
-                });
+            // Hiển thị tùy chọn dịch vụ tương ứng
+            const category = this.value;
+            if (category) {
+                document.getElementById(category + '-services').style.display = 'block';
             }
             
-            document.getElementById('result').style.display = 'none';
-        }
+            // Reset các lựa chọn
+            document.querySelectorAll('select[multiple]').forEach(function(select) {
+                for (let i = 0; i < select.options.length; i++) {
+                    select.options[i].selected = false;
+                }
+            });
+            
+            // Xóa các input số lượng
+            document.getElementById('quantity-inputs').innerHTML = '';
+            document.getElementById('quantity-inputs').style.display = 'none';
+            
+            // Reset kết quả
+            updateResult();
+        });
         
-        function calculatePrice() {
-            const category = document.getElementById('category').value;
-            
-            if (!category || !serviceData[category]) {
-                document.getElementById('result').style.display = 'none';
-                return;
-            }
-            
-            let subtotal = 0;
-            let selectedServices = [];
-            let longestTime = { min: 0, max: 0 };
-            
-            // Calculate base prices for selected services
-            Object.keys(serviceData[category].options).forEach(key => {
-                const checkbox = document.getElementById(key);
-                if (checkbox && checkbox.checked) {
-                    const quantityInput = document.getElementById(`${key}-quantity`);
-                    const quantity = parseInt(quantityInput.value) || 1;
-                    const service = serviceData[category].options[key];
-                    const price = service.price * quantity;
+        // Lắng nghe sự kiện thay đổi dịch vụ
+        document.querySelectorAll('select[multiple]').forEach(function(select) {
+            select.addEventListener('change', function() {
+                // Tạo các input số lượng
+                const quantityInputs = document.getElementById('quantity-inputs');
+                quantityInputs.innerHTML = '';
+                
+                const selectedOptions = Array.from(this.selectedOptions);
+                
+                if (selectedOptions.length > 0) {
+                    quantityInputs.style.display = 'block';
                     
-                    subtotal += price;
-                    selectedServices.push({
-                        name: service.name,
-                        quantity: quantity,
-                        price: price,
-                        time: service.time
+                    selectedOptions.forEach(function(option) {
+                        const row = document.createElement('div');
+                        row.className = 'quantity-row';
+                        
+                        const label = document.createElement('label');
+                        label.textContent = option.textContent.split(' - ')[0] + ':';
+                        
+                        const input = document.createElement('input');
+                        input.type = 'number';
+                        input.min = '1';
+                        input.value = '1';
+                        input.dataset.service = option.value;
+                        input.dataset.price = option.dataset.price;
+                        input.addEventListener('change', updateResult);
+                        
+                        row.appendChild(label);
+                        row.appendChild(input);
+                        quantityInputs.appendChild(row);
                     });
+                } else {
+                    quantityInputs.style.display = 'none';
+                }
+                
+                updateResult();
+            });
+        });
+        
+        // Lắng nghe sự kiện thay đổi phụ phí
+        document.querySelectorAll('.surcharge-option input').forEach(function(checkbox) {
+            checkbox.addEventListener('change', updateResult);
+        });
+        
+        // Cập nhật kết quả
+        function updateResult() {
+            let totalPrice = 0;
+            let breakdown = '';
+            let estimatedDays = 0;
+            
+            // Tính tổng giá dựa trên số lượng
+            document.querySelectorAll('#quantity-inputs input').forEach(function(input) {
+                const price = parseInt(input.dataset.price);
+                const quantity = parseInt(input.value);
+                const serviceTotal = price * quantity;
+                
+                if (quantity > 0) {
+                    totalPrice += serviceTotal;
                     
-                    // Calculate project timeline
-                    const timeRange = service.time.split('-').map(t => parseInt(t.match(/\d+/)[0]));
-                    if (timeRange.length === 1) {
-                        if (timeRange[0] > longestTime.max) {
-                            longestTime.min = longestTime.max = timeRange[0];
-                        }
-                    } else if (timeRange.length === 2) {
-                        if (timeRange[1] > longestTime.max) {
-                            longestTime.min = timeRange[0];
-                            longestTime.max = timeRange[1];
-                        }
+                    const serviceName = input.closest('.quantity-row').querySelector('label').textContent;
+                    breakdown += `<div class="result-item">
+                        <span>${serviceName} x ${quantity}</span>
+                        <span>${formatPrice(serviceTotal)}</span>
+                    </div>`;
+                    
+                    // Ước tính thời gian
+                    if (price < 500000) {
+                        estimatedDays += quantity * 1;
+                    } else if (price < 1000000) {
+                        estimatedDays += quantity * 2;
+                    } else if (price < 3000000) {
+                        estimatedDays += quantity * 4;
+                    } else {
+                        estimatedDays += quantity * 7;
                     }
                 }
             });
             
-            // Calculate additional fees
-            let additionalFees = [];
-            let totalAdditionalFee = 0;
-            
-            if (document.getElementById('urgent').checked) {
-                const urgentFee = subtotal * 0.5;
-                additionalFees.push({ name: 'Gấp (50%)', fee: urgentFee });
-                totalAdditionalFee += urgentFee;
-            }
-            
-            if (document.getElementById('multilingual').checked) {
-                const multilingualFee = subtotal * 0.3;
-                additionalFees.push({ name: 'Thêm ngôn ngữ (30%)', fee: multilingualFee });
-                totalAdditionalFee += multilingualFee;
-            }
-            
-            if (document.getElementById('mockup').checked) {
-                const mockupFee = subtotal * 0.2;
-                additionalFees.push({ name: 'Mockup 3D (20%)', fee: mockupFee });
-                totalAdditionalFee += mockupFee;
-            }
-            
-            const total = subtotal + totalAdditionalFee;
-            
-            // Display results
-            if (selectedServices.length > 0) {
-                const breakdown = document.getElementById('breakdown');
-                const totalPrice = document.getElementById('totalPrice');
-                const timeline = document.getElementById('timeline');
+            // Tính phụ phí
+            let surchargeTotal = 0;
+            document.querySelectorAll('.surcharge-option input:checked').forEach(function(checkbox) {
+                const rate = parseFloat(checkbox.dataset.rate);
+                const surcharge = totalPrice * rate;
+                surchargeTotal += surcharge;
                 
-                let breakdownHTML = '';
+                breakdown += `<div class="result-item">
+                    <span>${checkbox.nextElementSibling.textContent}</span>
+                    <span>${formatPrice(surcharge)}</span>
+                </div>`;
                 
-                // Services breakdown
-                selectedServices.forEach(service => {
-                    breakdownHTML += `
-                        <div class="price-item">
-                            <span class="price-label">${service.name} x ${service.quantity}</span>
-                            <span class="price-value">${service.price.toLocaleString('vi-VN')}đ</span>
-                        </div>
-                    `;
-                });
-                
-                // Subtotal
-                breakdownHTML += `
-                    <div class="price-item">
-                        <span class="price-label">Tổng phí dịch vụ</span>
-                        <span class="price-value">${subtotal.toLocaleString('vi-VN')}đ</span>
-                    </div>
-                `;
-                
-                // Additional fees
-                additionalFees.forEach(fee => {
-                    breakdownHTML += `
-                        <div class="price-item">
-                            <span class="price-label">${fee.name}</span>
-                            <span class="price-value">+${fee.fee.toLocaleString('vi-VN')}đ</span>
-                        </div>
-                    `;
-                });
-                
-                breakdown.innerHTML = breakdownHTML;
-                totalPrice.textContent = `${total.toLocaleString('vi-VN')}đ`;
-                
-                // Timeline
-                let timeText = '';
-                if (longestTime.min === longestTime.max) {
-                    timeText = `${longestTime.max} ngày`;
-                } else {
-                    timeText = `${longestTime.min}-${longestTime.max} ngày`;
+                // Điều chỉnh thời gian nếu gấp
+                if (checkbox.id === 'urgent') {
+                    estimatedDays = Math.ceil(estimatedDays * 0.7);
                 }
-                
-                timeline.innerHTML = `<strong>⏱️ Thời gian dự kiến:</strong> ${timeText}`;
-                
-                document.getElementById('result').style.display = 'block';
-            } else {
-                document.getElementById('result').style.display = 'none';
-            }
+            });
+            
+            totalPrice += surchargeTotal;
+            
+            // Hiển thị kết quả
+            document.getElementById('total-price').textContent = formatPrice(totalPrice);
+            document.getElementById('price-breakdown').innerHTML = breakdown;
+            document.getElementById('estimated-time').textContent = estimatedDays + ' ngày';
         }
         
-        function exportToPDF() {
-            window.print();
+        // Định dạng giá
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
         }
     </script>
 </body>
